@@ -1,0 +1,10 @@
+{
+    "translation_configs": [
+        {
+            "model_path": "models/ende_ctranslate2",
+            "source_language": "en",
+            "target_language": "de"
+        }
+    ],
+    "sentence_config": {"model_file": "models/sentencepiece.model"}
+}
