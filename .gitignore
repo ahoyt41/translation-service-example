@@ -161,3 +161,4 @@ cython_debug/
 pyrightconfig.json
 *.odp#
 translation_service_example/proto
+models/

@@ -1,8 +1,11 @@
+from pathlib import Path
+from argparse import ArgumentParser
 from concurrent import futures
 from collections.abc import Iterator
 import grpc
 from threading import Event
 from google.protobuf.empty_pb2 import Empty
+from pydantic_core.core_schema import ArgumentsParameter
 
 from translation_service_example.models import TranslationService, Translator
 from translation_service_example.config import load_config
@@ -109,7 +112,12 @@ class TranslationServer(TranslationServiceServicer):
 
 
 def main():
-    cfg = load_config()
+    parser = ArgumentParser()
+    parser.add_argument("-c", "--config_file", type=Path, default=Path("config.json"))
+
+    args = parser.parse_args()
+
+    cfg = load_config(args.config_file)
     svc = Translator(
         cfg.sentence_config.model_file,
         cfg.translation_configs,

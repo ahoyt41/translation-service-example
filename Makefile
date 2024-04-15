@@ -58,7 +58,7 @@ $(MODEL_TAR):
 	curl -SL $(MODEL_URL) > $(MODEL_TAR)
 
 $(MODEL_PT_FILE) $(SENTENCE_MODEL): $(MODEL_TAR)
-	tar xzf $(MODEL_TAR)
+	tar xzf $(MODEL_TAR) -C models
 
 clean:
 	rm -rf models $(PROTO_PATH)
